@@ -38,7 +38,7 @@ pipeline {
                 }
             }
         }
-        /*stage('DeployToProduction') {
+        stage('DeployToProduction') {
             when {
                 branch 'master'
             }
@@ -46,7 +46,12 @@ pipeline {
                 input 'Deploy to Production?'
                 milestone(1)
                 //implement Kubernetes deployment here
+                kubernetesDeploy(
+                    kubeconfigId: 'kubernetes_login',               // REQUIRED
+                    configs: 'train-schedule-kube.yaml', // REQUIRED
+                    enableConfigSubstitution: true
+                )
             }
-        }*/
+        }
     }
 }
