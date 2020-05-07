@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         //be sure to replace "willbla" with your own Docker Hub username
-        DOCKER_IMAGE_NAME = "willbla/train-schedule"
+        DOCKER_IMAGE_NAME = "aiep/train-schedule"
     }
     stages {
         stage('Build') {
@@ -38,7 +38,7 @@ pipeline {
                 }
             }
         }
-        stage('DeployToProduction') {
+        /*stage('DeployToProduction') {
             when {
                 branch 'master'
             }
@@ -47,6 +47,6 @@ pipeline {
                 milestone(1)
                 //implement Kubernetes deployment here
             }
-        }
+        }*/
     }
 }
